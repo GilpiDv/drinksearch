@@ -4,7 +4,7 @@ import { useAppStore } from '../stores/useAppStore';
 import type { Recipe } from '../types';
  
 export default function Modal() {
-    const { modal, closeModal, selectedRecipe, handleClickFavorite, favoriteExists } = useAppStore()
+    const { modal, closeModal, selectedRecipe, handleClickFavorite, favoriteExists, showNotification } = useAppStore()
 
     const renderIngredients = () => {
         const ingredients : JSX.Element[] = [];
@@ -63,11 +63,11 @@ export default function Modal() {
                             className='mx-auto w-96' 
                         />
                         <DialogTitle as="h3" className="text-gray-900 text-2xl font-extrabold my-5">
-                            Ingredientes y Cantidades
+                            Ingredients and Measures
                         </DialogTitle>
                         {renderIngredients()}
                         <DialogTitle as="h3" className="text-gray-900 text-2xl font-extrabold my-5">
-                            Instrucciones
+                            Steps
                         </DialogTitle>
                         <p className='text-lg'>{selectedRecipe.strInstructions}</p>
 
@@ -82,7 +82,17 @@ export default function Modal() {
                             <button
                                 type='button'
                                 className='w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-orange-500 cursor-pointer'
-                                onClick={() => handleClickFavorite(selectedRecipe)}
+                                onClick={() => {
+                                        handleClickFavorite(selectedRecipe)
+                                        closeModal()
+                                        showNotification({
+                                            text: favoriteExists(selectedRecipe.idDrink)
+                                                ? 'Added to favorites'
+                                                : 'Removed from favorites',
+                                            error: false
+                                        })
+                                    }
+                                }
                             >
                                 {favoriteExists(selectedRecipe.idDrink) ? 'Remove Favorite' : 'Add to Favorites'}
                             </button>

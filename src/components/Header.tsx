@@ -9,7 +9,7 @@ export default function Header() {
     });
     const { pathname } = useLocation();
     const isHome = useMemo(() => pathname === '/', [pathname]);
-    const { fetchCategories, categories, searchDrinks } = useAppStore();
+    const { fetchCategories, categories, searchDrinks, showNotification } = useAppStore();
 
     useEffect(() => {
         fetchCategories();
@@ -26,7 +26,10 @@ export default function Header() {
         e.preventDefault();
 
         if(Object.values(searchFilters).includes("")) {
-            console.log("All fields are required"); // TODO
+            showNotification({
+                text: 'All fields are required',
+                error: true
+            })
             return;
         }
 
