@@ -1,54 +1,73 @@
-# React + TypeScript + Vite
+# DrinkSearch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript application for searching and managing cocktail recipes, built with Vite, Zustand, TailwindCSS, and Zod.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search Recipes:** Find drink recipes by ingredient and category.
+- **Favorites:** Save and manage your favorite drinks.
+- **Recipe Details:** View detailed instructions and ingredients in a modal.
+- **Persistent Favorites:** Favorites are stored in localStorage.
+- **Responsive UI:** Styled with TailwindCSS for a clean, responsive design.
+- **Notifications:** User feedback for actions and errors.
+- **Type Safety:** Uses Zod for API response validation and TypeScript throughout.
+- **State Management:** Powered by Zustand with modular slices.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+src/
+  components/      # UI components (DrinkCard, Header, Modal, Notification)
+  layouts/         # Layout wrapper
+  services/        # API service (RecipeService)
+  stores/          # Zustand slices (recipes, favorites, notifications)
+  types/           # TypeScript types (from Zod schemas)
+  utils/           # Zod schemas for API validation
+  views/           # Page components (IndexPage, FavoritesPage)
+  main.tsx         # App entry point
+  router.tsx       # React Router setup
+  index.css        # TailwindCSS import
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- Node.js (v18+ recommended)
+- npm
+
+### Installation
+
+```sh
+npm install
 ```
+
+### Development
+
+```sh
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view the app.
+
+### Build
+
+```sh
+npm run build
+```
+
+### Lint
+
+```sh
+npm run lint
+```
+
+## Configuration
+
+- **API:** Uses [TheCocktailDB](https://www.thecocktaildb.com/api.php) for fetching recipes.
+- **State:** See [`src/stores/useAppStore.ts`](src/stores/useAppStore.ts) for combined Zustand store.
+- **Type Validation:** See [`src/utils/recipes-schema.ts`](src/utils/recipes-schema.ts) for Zod schemas.
+
+## License
+
+MIT
