@@ -27,47 +27,42 @@ src/
   main.tsx         # App entry point
   router.tsx       # React Router setup
   index.css        # TailwindCSS import
+public/            # Static assets (images, logo)
 ```
 
-## Getting Started
+## Installation
 
-### Prerequisites
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/drink-recipes.git
+   cd drink-recipes
+   ```
 
-- Node.js (v18+ recommended)
-- npm
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-### Installation
+## Technologies Used
 
-```sh
-npm install
-```
+- [React](https://react.dev/) (with React Router)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Zod](https://zod.dev/)
+- [Axios](https://axios-http.com/)
+- [Headless UI](https://headlessui.com/)
+- [Heroicons](https://heroicons.com/)
 
-### Development
+## How to use
 
-```sh
-npm run dev
-```
+1. Search for drinks by selecting an ingredient and category, then click "Search".
+2. Click a drink to view its details in a modal.
+3. Add drinks to favorites from the modal.
+4. View and manage your favorites in the "Favorites" section.
+5. Remove drinks from favorites as needed.
 
-Open [http://localhost:5173](http://localhost:5173) to view the app.
+## Live Demo
 
-### Build
-
-```sh
-npm run build
-```
-
-### Lint
-
-```sh
-npm run lint
-```
-
-## Configuration
-
-- **API:** Uses [TheCocktailDB](https://www.thecocktaildb.com/api.php) for fetching recipes.
-- **State:** See [`src/stores/useAppStore.ts`](src/stores/useAppStore.ts) for combined Zustand store.
-- **Type Validation:** See [`src/utils/recipes-schema.ts`](src/utils/recipes-schema.ts) for Zod schemas.
-
-## License
-
-MIT
+[https://legendary-fox-f358a5.netlify.app/](https://legendary-fox-f358a5.netlify.app/)
